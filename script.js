@@ -1,7 +1,7 @@
 // ===============================
 // Base de datos de precios por m² en Lima (Agosto 2024)
 // ===============================
-const DATA = {
+const data = {
   // === LIMA TOP (Distritos Premium) ===
   "San Isidro": {
     type: ["Departamento", "Casa", "Terreno"],
@@ -982,4 +982,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
 
