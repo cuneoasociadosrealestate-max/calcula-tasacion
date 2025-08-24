@@ -1,31 +1,36 @@
-const CLAVE_GLOBAL = "12345";
+let currentPropertyType = '';
 
-// Elementos
-const gate = document.getElementById('gate');
-const app = document.getElementById('app');
-const gateMsg = document.getElementById('gateMsg');
-const btnLogin = document.getElementById('btnLogin');
-const logout = document.getElementById('logout');
+        // Función de login
+        function checkLogin() {
+            const password = document.getElementById("password").value;
+            const errorElement = document.getElementById("loginError");
+            
+            if (password === "lima2025") {
+                document.getElementById("loginContainer").style.display = "none";
+                document.getElementById("calculatorContainer").style.display = "block";
+                loadDistricts();
+            } else {
+                errorElement.textContent = "❌ Contraseña incorrecta";
+                errorElement.style.display = "block";
+                document.getElementById("password").value = "";
+            }
+        }
 
-// Login
-btnLogin.onclick = () => {
-  const inputClave = document.getElementById('clave').value;
-  if (inputClave === CLAVE_GLOBAL) {
-    gate.style.display = 'none';
-    app.style.display = 'block';
-    gateMsg.textContent = "";
-  } else {
-    gateMsg.textContent = "Clave incorrecta 🚫";
-  }
-};
+        // Función de logout
+        function logout() {
+            document.getElementById("calculatorContainer").style.display = "none";
+            document.getElementById("loginContainer").style.display = "block";
+            document.getElementById("password").value = "";
+            document.getElementById("loginError").style.display = "none";
+            clearForm();
+        }
 
-// Logout
-logout.onclick = () => {
-  app.style.display = 'none';
-  gate.style.display = 'block';
-  document.getElementById('clave').value = "";
-};
-
+        // Enter para login
+        document.getElementById("password").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                checkLogin();
+            }
+        });
 const data = {
   // === LIMA TOP (Distritos Premium) ===
   "San Isidro": {
@@ -1007,6 +1012,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
 
 
 
